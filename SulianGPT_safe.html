@@ -1,0 +1,66 @@
+
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <title>SulianGPT - Code Generator</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background-color: #111;
+      color: #eee;
+      padding: 20px;
+    }
+    h1 {
+      color: #58f773;
+    }
+    textarea, pre {
+      width: 100%;
+      box-sizing: border-box;
+      background-color: #222;
+      color: #0f0;
+      border: 1px solid #444;
+      padding: 10px;
+      margin-bottom: 20px;
+      font-family: monospace;
+      font-size: 14px;
+    }
+    button {
+      background-color: #58f773;
+      border: none;
+      padding: 10px 20px;
+      font-weight: bold;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+  <h1>🧠 SulianGPT - Générateur de code Web Safe</h1>
+  <p>Écris une commande comme : <code>Créer un bouton vert avec un effet au clic</code></p>
+  <textarea id="prompt" rows="3" placeholder="Ex : Crée une animation de texte en CSS..."></textarea>
+  <button onclick="generateCode()">Générer</button>
+  <pre id="output">// Le code généré s'affichera ici</pre>
+
+  <script>
+    function generateCode() {
+      const prompt = document.getElementById('prompt').value.toLowerCase();
+      let output = '';
+
+      if (prompt.includes('bouton')) {
+        output = `<button style="background-color: green; color: white; padding: 10px; border: none;">Clique moi</button>`;
+      } else if (prompt.includes('animation')) {
+        output = `<style>
+@keyframes slide { from {opacity: 0;} to {opacity: 1;} }
+h1 { animation: slide 2s ease-in-out; }
+</style>`;
+      } else if (prompt.includes('carte')) {
+        output = `<div style="border:1px solid #ccc; padding:10px; border-radius:10px;">Ma carte stylée</div>`;
+      } else {
+        output = '// Désolé, cette commande n'est pas encore prise en charge.';
+      }
+
+      document.getElementById('output').textContent = output;
+    }
+  </script>
+</body>
+</html>
